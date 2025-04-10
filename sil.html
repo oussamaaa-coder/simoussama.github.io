@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Secret entre Amis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #4a6baf;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            border-color: #4a6baf;
+            outline: none;
+        }
+        
+        button {
+            background: linear-gradient(to right, #4a6baf, #6a8fd8);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 107, 175, 0.4);
+        }
+        
+        .confirmation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            color: #2e7d32;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Partage ton secret</h1>
+        <form id="secretForm">
+            <div class="input-group">
+                <label for="name">Ton prénom:</label>
+                <input type="text" id="name" required placeholder="Ex: Jean">
+            </div>
+            <div class="input-group">
+                <label for="secret">Ton secret:</label>
+                <input type="text" id="secret" required placeholder="Ex: J'adore le chocolat">
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+        <div class="confirmation" id="confirmation">
+            Merci ! Ton secret a bien été enregistré.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('secretForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const secret = document.getElementById('secret').value;
+            
+            // Ici vous enverrez les données à votre solution de stockage
+            console.log('Nom:', name);
+            console.log('Secret:', secret);
+            
+            // Afficher le message de confirmation
+            document.getElementById('confirmation').style.display = 'block';
+            
+            // Réinitialiser le formulaire
+            document.getElementById('secretForm').reset();
+            
+            // Optionnel: Envoyer les données à un serveur
+            // Vous devrez remplacer cette partie par votre solution de stockage choisie
+        });
+    </script>
+</body>
+</html>
